@@ -258,26 +258,13 @@ class CheckSetupController extends Controller {
 	}
 
 	/**
-	 * Whether the version is outdated
-	 *
-	 * @return bool
-	 */
-	protected function isPhpOutdated() {
-		if (version_compare(PHP_VERSION, '7.1.0', '<')) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
 	 * Whether the php version is still supported (at time of release)
 	 * according to: https://secure.php.net/supported-versions.php
 	 *
 	 * @return array
 	 */
 	private function isPhpSupported() {
-		return ['eol' => $this->isPhpOutdated(), 'version' => PHP_VERSION];
+		return ['eol' => PHP_VERSION_ID < 70300, 'version' => PHP_VERSION];
 	}
 
 	/**
