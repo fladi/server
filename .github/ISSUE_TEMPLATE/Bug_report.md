@@ -28,7 +28,7 @@ Guidelines for submitting issues:
 
 * The issues in other components should be reported in their respective repositories: You will find them in our GitHub Organization (https://github.com/nextcloud/)
   
-* Report the issue using one of our [templates][templates], they include all the information we need to track down the issue. You can also use the Issue Template app to prefill most of the required information: https://apps.nextcloud.com/apps/issuetemplate
+* You can also use the Issue Template app to prefill most of the required information: https://apps.nextcloud.com/apps/issuetemplate
 -->
 
 <!--- Please keep this note for other contributors -->
