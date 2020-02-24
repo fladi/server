@@ -921,11 +921,7 @@ class CardDavBackend implements BackendInterface, SyncSupport {
 
 		// No need for like when the pattern is empty
 		if ('' !== $pattern) {
-			if(\array_key_exists('escape_like_param', $options) && $options['escape_like_param'] === false) {
-				$query2->andWhere($query2->expr()->ilike('cp.value', $query->createNamedParameter($pattern)));
-			} else {
-				$query2->andWhere($query2->expr()->ilike('cp.value', $query->createNamedParameter('%' . $this->db->escapeLikeParameter($pattern) . '%')));
-			}
+			$query2->andWhere(sprintf('MATCH (cp.value) AGAINST (\'"%s"\' IN BOOLEAN MODE)', trim($this->db->quote($pattern), '\'')));
 		}
 
 		$query->select('c.carddata', 'c.uri')->from($this->dbCardsTable, 'c')
